@@ -1,0 +1,3 @@
+# .marksman.toml
+[core]
+markdown.extension = ".md"

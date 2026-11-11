@@ -1,7 +1,9 @@
-import pandas as pd 
-import numpy as np
-import time
 import cmath
+import time
+
+import cs50 as cs
+import numpy as np
+import pandas as pd
 
 company = "MITTI"
 admins = [
@@ -9,23 +11,36 @@ admins = [
     {"name": "jajyuu", "email": "jajyuu@gmail.com", "password": "jajyuu123"},
 ]
 users = {
-    "arjun@gmail.com": {"name": "Arjun", "email": "arjun@gmail.com", "password": "arjun123", "age": 25},
-    "john@gmail.com": {"name": "John", "email": "john@gmail.com", "password": "john123", "age": 30},
-    "mittens@gmail.com": {"name": "Mittens", "email": "mittens@gmail.com", "password": "mittens123", "age": 22}
+    "arjun@gmail.com": {
+        "name": "Arjun",
+        "email": "arjun@gmail.com",
+        "password": "arjun123",
+        "age": 25,
+    },
+    "john@gmail.com": {
+        "name": "John",
+        "email": "john@gmail.com",
+        "password": "john123",
+        "age": 30,
+    },
+    "mittens@gmail.com": {
+        "name": "Mittens",
+        "email": "mittens@gmail.com",
+        "password": "mittens123",
+        "age": 22,
+    },
 }
 
+
 def create_user():
-    name = input("Enter your name: ").strip()
+    name = cs.get_string("Enter your name: ").strip()
     if not name:
         print("Name cannot be empty.")
         return
 
-    try:
-        age = int(input("Enter your age: ").strip())
-    except ValueError:
-        print("Age must be a whole number.")
+    age = cs.get_int("Enter your age: ")
+    if age is None:
         return
-
     if age < 18:
         print("You are not eligible to create an account.")
         return
@@ -33,7 +48,7 @@ def create_user():
         print("You are too old to create an account.")
         return
 
-    email = input("Enter your email: ").strip().lower()
+    email = cs.get_string("Enter your email: ").strip().lower()
     if not email or "@" not in email or "." not in email.split("@")[-1]:
         print("Please enter a valid email address.")
         return
@@ -41,7 +56,7 @@ def create_user():
         print("This email has already been used.")
         return
 
-    password = input("Enter your password: ").strip()
+    password = cs.get_string("Enter your password: ").strip()
     if len(password) < 6 or len(password) > 20:
         print("Password must be between 6 and 20 characters.")
         return
@@ -61,8 +76,8 @@ def create_user():
 
 
 def login():
-    email = input("Enter your email: ").strip().lower()
-    password = input("Enter your password: ").strip()
+    email = cs.get_string("Enter your email: ").strip().lower()
+    password = cs.get_string("Enter your password: ").strip()
 
     user = users.get(email)
     if user is not None and user["password"] == password:
@@ -90,7 +105,7 @@ def admin_menu(admin_user):
         print("1. Display registered users")
         print("2. Log out")
 
-        choice = input("Choose an option (1-2): ").strip()
+        choice = cs.get_string("Choose an option (1-2): ").strip()
         if choice == "1":
             display_users()
         elif choice == "2":
@@ -101,14 +116,11 @@ def admin_menu(admin_user):
 
 
 def admin_login():
-    email = input("Enter the admin's email: ").strip().lower()
-    password = input("Enter the admin's password: ").strip()
+    email = cs.get_string("Enter the admin's email: ").strip().lower()
+    password = cs.get_string("Enter the admin's password: ").strip()
 
     for admin_user in admins:
-        if (
-            admin_user["email"].lower() == email
-            and admin_user["password"] == password
-        ):
+        if admin_user["email"].lower() == email and admin_user["password"] == password:
             print(f"Admin login successful. Welcome, {admin_user['name']}!")
             admin_menu(admin_user)
             return
@@ -124,7 +136,7 @@ def main():
         print("3. Quit")
         print("4. Admin Login")
 
-        choice = input("Enter your choice (1-4): ").strip()
+        choice = cs.get_string("Enter your choice (1-4): ").strip()
 
         if choice == "1":
             create_user()
