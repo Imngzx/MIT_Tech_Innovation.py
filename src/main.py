@@ -1,7 +1,7 @@
-import cs50 as cs
 import cmath
 import time
 
+import cs50 as cs
 import numpy as np
 import pandas as pd
 
@@ -113,6 +113,7 @@ def admin_menu(admin_user):
             return
         else:
             print("Invalid choice. Enter 1 or 2.")
+
 
 def admin_login():
     email = cs.get_string("Enter the admin's email: ").strip().lower()
