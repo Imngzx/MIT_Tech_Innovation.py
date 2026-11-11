@@ -1,5 +1,10 @@
 [project]
 name = "mit-tech-innovation"
 version = "0.1.0"
-requires-python = ">= 3.13"
-dependencies = ["pandas", "cs50"]
+description = "MIT Tech Innovation project"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["pandas>=2.0", "numpy>=1.24", "cs50"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
