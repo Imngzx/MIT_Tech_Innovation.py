@@ -2,7 +2,7 @@
 
 ----------
 
-For installation, please refer to [[WORKFLOW#Setup, Development & Building For This Project]]
+For installation, please refer to [this](WORKFLOW.md)
 
 > [!WARNING]
 > project still undergoing brainstorming
