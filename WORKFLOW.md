@@ -9,7 +9,7 @@
   - `ty` or `pyrefly` as LSP
   - `ruff` as formatter and linter
 
-| Task | Commands |
+| Commands | Tasks |
 | -------------- | --------------- |
 | `uv sync` | install all the dependiencies/libs |
 | `uv run python -m src.main` | run the code |
