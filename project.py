@@ -1,7 +1,8 @@
-import pandas as pd 
-import numpy as np
-import time
 import cmath
+import time
+
+import numpy as np
+import pandas as pd
 
 company = "MITTI"
 admins = [
@@ -9,10 +10,26 @@ admins = [
     {"name": "jajyuu", "email": "jajyuu@gmail.com", "password": "jajyuu123"},
 ]
 users = {
-    "arjun@gmail.com": {"name": "Arjun", "email": "arjun@gmail.com", "password": "arjun123", "age": 25},
-    "john@gmail.com": {"name": "John", "email": "john@gmail.com", "password": "john123", "age": 30},
-    "mittens@gmail.com": {"name": "Mittens", "email": "mittens@gmail.com", "password": "mittens123", "age": 22}
+    "arjun@gmail.com": {
+        "name": "Arjun",
+        "email": "arjun@gmail.com",
+        "password": "arjun123",
+        "age": 25,
+    },
+    "john@gmail.com": {
+        "name": "John",
+        "email": "john@gmail.com",
+        "password": "john123",
+        "age": 30,
+    },
+    "mittens@gmail.com": {
+        "name": "Mittens",
+        "email": "mittens@gmail.com",
+        "password": "mittens123",
+        "age": 22,
+    },
 }
+
 
 def create_user():
     name = input("Enter your name: ").strip()
@@ -105,10 +122,7 @@ def admin_login():
     password = input("Enter the admin's password: ").strip()
 
     for admin_user in admins:
-        if (
-            admin_user["email"].lower() == email
-            and admin_user["password"] == password
-        ):
+        if admin_user["email"].lower() == email and admin_user["password"] == password:
             print(f"Admin login successful. Welcome, {admin_user['name']}!")
             admin_menu(admin_user)
             return
